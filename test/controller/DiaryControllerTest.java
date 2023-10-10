@@ -40,7 +40,7 @@ class DiaryControllerTest {
     }
 
     @Test
-    public void testThatDiaryCanBeLockedAndCreateEntryCannotCreateEntryWhenUserCreateEntry() throws CustomerException {
+    public void testEntryCanBeCreatedWhenDiaryIsLocked() throws CustomerException {
         String actual = diaryController.register(registerUserRequest);
         assertEquals("Successful", actual);
 
@@ -72,7 +72,7 @@ class DiaryControllerTest {
     }
 
     @Test
-    public void testThatAddedEntryBelongingToUserCanBeFound(){
+    public void testThatEntryBelongToUserCanBeFound(){
         String actual = diaryController.register(registerUserRequest);
         assertEquals("Successful", actual);
 

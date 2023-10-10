@@ -120,7 +120,7 @@ class DiaryServiceImplTest {
     }
 
     @Test
-    public void testThatDiaryIsStillLocked_andThrowsExceptionIfUnlockPasswordIsIncorrect() throws CustomerException {
+    public void testToUnlockPasswordIsIncorrect() throws CustomerException {
 
         diaryService.register(registerUserRequest);
 
@@ -142,7 +142,19 @@ class DiaryServiceImplTest {
     }
 
     @Test
-    public void testForErrorMessage(){
+    public void testForErrorMessageWithWrongTitleName() throws CustomerException {
+        diaryService.register(registerUserRequest);
+        diaryService.addEntry("kevin", "title", "body");
+
+        assertThrows(CustomerException.class, () -> diaryService.findEntry("kevin", "words"));
+    }
+
+    @Test
+    public void testToAddEntryWhenDiaryIsLockDiary() throws CustomerException {
+        diaryService.register(registerUserRequest);
+        diaryService.lock("kevin");
+
+        assertThrows(CustomerException.class,()-> diaryService.addEntry("kevin","title", "body"));
 
     }
 

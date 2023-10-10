@@ -127,9 +127,9 @@ public class DiaryServiceImpl implements DiaryService {
     private void validate(String username) throws CustomerException {
         Diary foundDiary = diaryRepository.findByUsername(username);
         if(foundDiary == null)
-            throw new CustomerException("Diary not Found");
+            throw new CustomerException("Diary not found");
         if(foundDiary.getIsLock())
-            throw new CustomerException("Diary is Locked");
+            throw new CustomerException("Diary is locked");
     }
 
 
